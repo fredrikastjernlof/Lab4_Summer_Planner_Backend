@@ -36,6 +36,39 @@ const createEvent = async (req, res) => {
     }
 };
 
+// Update event
+const updateEvent = async (req, res) => {
+    try {
+        const { title, date, time, category, description } = req.body;
+
+        const updatedEvent = await Event.findOneAndUpdate(
+            {
+                _id: req.params.id,
+                userId: req.user.id
+            },
+            {
+                title,
+                date,
+                time,
+                category,
+                description
+            },
+            {
+                new: true,
+                runValidators: true
+            }
+        );
+
+        if (!updatedEvent) {
+            return res.status(404).json({ message: 'Event not found' });
+        }
+
+        res.status(200).json(updatedEvent);
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+};
+
 // Delete event 
 const deleteEvent = async (req, res) => {
     try {
@@ -58,5 +91,6 @@ const deleteEvent = async (req, res) => {
 module.exports = {
     getEvents,
     createEvent,
+    updateEvent,
     deleteEvent
 };
