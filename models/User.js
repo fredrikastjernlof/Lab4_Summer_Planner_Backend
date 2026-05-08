@@ -1,7 +1,7 @@
 // Import mongoose
 const mongoose = require('mongoose');
 
-// Define the User schema
+// Define the user schema
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -18,8 +18,8 @@ const userSchema = new mongoose.Schema({
     }
 });
 
-// Create the User model
+// Create the user
 const User = mongoose.model('User', userSchema);
 
-// Export the User model
+// Export the user model
 module.exports = User;
