@@ -36,7 +36,27 @@ const createEvent = async (req, res) => {
     }
 };
 
+// Delete event 
+const deleteEvent = async (req, res) => {
+    try {
+        const event = await Event.findOne({ _id: req.params.id, userId: req.user.id });
+
+        // Check if event exists
+        if (!event) {
+            return res.status(404).json({ message: 'Event not found' });
+        }
+
+        // Delete event
+        await event.deleteOne();
+
+        res.status(200).json({ message: 'Event deleted' });
+    } catch (error) {
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+};
+
 module.exports = {
     getEvents,
-    createEvent
+    createEvent,
+    deleteEvent
 };
