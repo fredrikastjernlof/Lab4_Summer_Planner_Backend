@@ -23,7 +23,7 @@ app.use('/api/todos', require('./routes/todoRoutes')); // ToDo route for protect
 
 // Test route
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('API is running! 🚀');
 });
 
 // Start the server

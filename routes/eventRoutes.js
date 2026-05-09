@@ -8,7 +8,8 @@ const { getEvents, createEvent, updateEvent, deleteEvent } = require('../control
 // Protected event routes
 router.get('/', authMiddleware, getEvents);
 router.post('/', authMiddleware, createEvent);
-router.put('/:id', authMiddleware, updateEvent);router.delete('/:id', authMiddleware, deleteEvent);
+router.put('/:id', authMiddleware, updateEvent);
+router.delete('/:id', authMiddleware, deleteEvent);
 
 // Export router
 module.exports = router;
