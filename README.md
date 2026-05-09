@@ -206,6 +206,7 @@ npm install
 ```env
 PORT=3000
 MONGODB_URI=din_connection_string
+JWT_SECRET=din_hemliga_nyckel
 ```
 
 4. Starta utvecklingsservern
