@@ -3,16 +3,19 @@ const mongoose = require('mongoose');
 
 // Define event schema
 const eventSchema = new mongoose.Schema({
-    title: { 
-        type: String, 
-        required: true 
+    title: {
+        type: String,
+        required: true
     },
-    date: { 
-        type: Date, 
-        required: true 
+    date: {
+        type: Date,
+        required: true
     },
     time: {
         type: String,
+    },
+    endTime: {
+        type: String
     },
     category: {
         type: String,
