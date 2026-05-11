@@ -52,7 +52,9 @@ Varje event lagras som ett dokument i MongoDB och innehåller följande fält:
 - _id (ObjectId)
 - title (string)
 - date (date)
+- endDate (date)
 - time (string)
+- endTime (string)
 - category (string)
 - description (string)
 - userId (ObjectId, koppling till användare)
@@ -155,7 +157,9 @@ Alla svar returneras i JSON-format.
 {
   "title": "Picknick på stranden",
   "date": "2026-06-15",
-  "time": "14:00",
+  "endDate": "2026-06-15",
+  "time": "13:00",
+  "endTime": "16:00",
   "category": "fun",
   "description": "Ta med solstol, solkräm och jordgubbar"
 }

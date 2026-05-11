@@ -15,7 +15,7 @@ const getEvents = async (req, res) => {
 // Create new event for logged in user
 const createEvent = async (req, res) => {
     try {
-        const { title, date, time, endTime, category, description } = req.body;
+        const { title, date, endDate, time, endTime, category, description } = req.body;
 
         if (!title || !date) {
             return res.status(400).json({ message: 'Title and date are required' });
@@ -24,6 +24,7 @@ const createEvent = async (req, res) => {
         const newEvent = await Event.create({
             title,
             date,
+            endDate,
             time,
             endTime,
             category,
@@ -40,7 +41,7 @@ const createEvent = async (req, res) => {
 // Update event
 const updateEvent = async (req, res) => {
     try {
-        const { title, date, time, endTime, category, description } = req.body;
+        const { title, date, endDate, time, endTime, category, description } = req.body;
 
         const updatedEvent = await Event.findOneAndUpdate(
             {
@@ -50,6 +51,7 @@ const updateEvent = async (req, res) => {
             {
                 title,
                 date,
+                endDate,
                 time,
                 endTime,
                 category,
