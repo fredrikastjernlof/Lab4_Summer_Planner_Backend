@@ -5,7 +5,10 @@
 Detta repository innehåller del 1 av Laboration 4 i kursen Backend-baserad webbutveckling.
 Uppgiften går ut på att skapa funktionaliet för autentisering med registrering av användarkonton samt inloggning.
 
-I uppgiften används JWT's för sessionshantering för att förhindra obehörig åtkomst till resurser.
+I uppgiften används JWT's för sessionshantering för att förhindra obehörig åtkomst till resurser. 
+
+Projektet är uppbyggt som en somrig planner-applikation där användare kan skapa events, planera veckor och hålla 
+koll på todos genom ett personligt konto med autentisering.
 
 ---
 
@@ -94,6 +97,7 @@ Webbtjänsten stödjer följande funktionalitet:
 - Registrera användare
 - Logga in användare
 - Skapa JWT-token vid inloggning
+- Ta bort användarkonto och all användardata
 
 ### Events 
 - Hämta användarens events
@@ -119,6 +123,7 @@ Alla svar returneras i JSON-format.
 |--------|--------------------------|------------------------------|
 | POST   | /api/auth/register       | Registrera användare         |
 | POST   | /api/auth/login          | Logga in användare           |
+| DELETE | /api/auth/delete-account | Tar bort användarkonto       |
 
 ### Events
 

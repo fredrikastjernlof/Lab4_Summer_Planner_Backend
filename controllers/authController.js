@@ -2,6 +2,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+const Event = require('../models/Event');
+const Todo = require('../models/Todo');
 
 // Register a new user
 const registerUser = async (req, res) => {
@@ -86,8 +88,26 @@ const loginUser = async (req, res) => {
     }
 }
 
+// Delete the logged in user's account and all related data
+const deleteAccount = async (req, res) => {
+    try {
+        await Event.deleteMany({ userId: req.user.id });
+        await Todo.deleteMany({ userId: req.user.id });
+        await User.findByIdAndDelete(req.user.id);
+
+        res.status(200).json({
+            message: 'Account deleted successfully'
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: 'Could not delete account'
+        });
+    }
+};
+
 // Export functions
 module.exports = {
     registerUser,
-    loginUser
+    loginUser,
+    deleteAccount
 };
